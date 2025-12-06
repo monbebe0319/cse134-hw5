@@ -1,0 +1,380 @@
+@font-face {
+  font-family: 'CustomFontItaliana';
+  src: url('Italiana/Italiana-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CustomFontQuicksand';
+  src: url('Quicksand/static/Quicksand-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@media (max-width: 900px){
+  header nav{
+    gap: 1rem;
+    padding: .75rem 1rem;
+  }
+  .logo-link img{
+    max-width: auto; 
+    height: auto;
+  }
+}
+
+@media (max-width: 600px){
+  header nav{
+    flex-direction: column; 
+    align-items: center;
+    gap: .5rem;
+  }
+  header nav a{
+    display: block;
+    padding: .6rem 1rem;
+  }
+}
+
+:root {
+  --accent-color: #fe8cac;
+  --text-color: #000000;
+  --nav-border-color: black;
+  --footer-border-color: black;
+  --page-bg-color: white;
+  --projects-bg-color: white;
+  --marquee-bg: black;
+  --marquee-text: white;
+  --body-bg-image: url('/img/background.JPG');
+  --form-bg-color: white;
+  --input-text-color: black;
+}
+
+:root[data-theme="dark"] {
+  --accent-color: #ff9ac4;
+  --text-color: #ffffff;
+  --nav-border-color: grey;
+  --footer-border-color: grey;
+  --body-bg-image: url('/img/darkWallpaeper.jpg');
+  --form-bg-color: #000000;
+  --input-text-color: #ffffff;
+  --projects-bg-color: #000000;
+  --page-bg-color: transparent;
+}
+
+h3, p, li{
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-size: .8rem;
+  color: var(--text-color);
+  margin-top: 1rem;
+  padding: 0;
+}
+
+marquee{
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-size: 0.5rem;
+  color: var(--marquee-text);
+  background-color: var(--marquee-bg);
+  padding: 0;
+  margin: 0;
+}
+
+lace-border {
+  display: block;               
+  width: 100%;                     
+  height: 100px;                   
+  background-image: url('img/whiteLaceBorder.png');
+  background-repeat: repeat-x; 
+  background-position: top center; 
+  margin: 0;
+  padding: 0;
+}
+
+h2{
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-size: 1.5rem;
+  margin-top: -6rem;
+  color: var(--text-color);
+}
+
+header nav{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: space-between;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-size: 1rem; 
+  background-color: var(--page-bg-color);
+  border-top: 0.25rem solid var(--nav-border-color);
+  border-bottom: 0.25rem solid var(--nav-border-color);
+}
+
+header nav a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;            
+  color: black; 
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.25s ease, transform 0.15s ease;
+}
+
+header nav a:hover {
+  color: var(--accent-color); 
+  transform: scale(1.25); 
+  text-shadow: 0 0 5px rgba(254, 140, 172, 0.7);
+  text-decoration: underline;
+}
+
+#theme-toggle {
+  margin-left: auto;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent-color);
+  background: transparent;
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#theme-toggle:hover {
+  background-color: color-mix(in srgb, #fe8cac 20%, white);
+}
+
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-top: 0.10rem solid var(--footer-border-color);
+  background-color: var(--page-bg-color);
+}
+
+general-body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--page-bg-color);
+  margin: 2rem;
+}
+
+main{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+html, body {
+  height: 100%;                
+  margin: 0;
+  background-color: #000000;
+  background-image: var(--body-bg-image);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text-color);
+  cursor: url('../img/cursorImg.png'), auto;
+}
+
+form{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--form-bg-color);
+}
+
+form label{
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-size: 1rem;
+  color: var(--accent-color);
+  margin-top: 1rem;
+  padding: 0;
+}
+
+form input{
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-size: 1rem;
+  color: var(--input-text-color);
+  margin-top: 0;
+  padding: 0.5rem;
+  border: 0.1rem solid var(--accent-color);
+  border-radius: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form textarea{
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-size: 1rem;
+  color: var(--input-text-color);
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 0.1rem solid var(--accent-color);
+  border-radius: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form button{
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-size: 1rem;
+  color: var(--accent-color);
+  background-color: color-mix(in srgb, #fe8cac 30%, pink);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+input:user-invalid, textarea:user-invalid {
+  border-color: red;
+  background-color: #ffe6e6;
+  border-width: 3px;
+}
+
+input:valid, textarea:valid {
+  border-color: green;
+  background-color: #e6ffe6;
+  border-width: 3px;
+}
+
+input.flash, textarea.flash {
+  animation: flash 0.3s alternate 2;
+}
+
+@keyframes flash {
+  from { background-color: #ffcccc; }
+  to { background-color: white; }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 1rem;
+}
+
+output {
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.error {
+  color: red;
+  height: 14px;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.error.hidden {
+  opacity: 0;
+}
+
+.info {
+  color: gray;
+}
+
+projects-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--projects-bg-color);
+  margin: 2rem;
+}
+
+details{
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+summary{
+  font-family: 'CustomFontItaliana', sans-serif;
+  font-size: 1.25rem;
+  color: var(--accent-color);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@layer accordion{
+  details{
+    border: 0.15rem solid var(--accent-color);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin: 1rem 1rem 1rem ;
+    background-color: var(--page-bg-color);
+  }
+}
+
+@media(color-gamut: srgb){
+  h2{
+    color: color-mix(in srgb, #fe8cac 70%, pink);
+  }
+}
+
+:root[data-theme="dark"] header nav{
+  background-color: grey;
+}
+
+:root[data-theme="dark"] header nav a{
+  color: #ffffff;
+}
+
+:root[data-theme="dark"] projects-body{
+  background-color: var(--projects-bg-color);
+}
+
+:root[data-theme="dark"] general-body,
+:root[data-theme="dark"] main,
+:root[data-theme="dark"] form,
+:root[data-theme="dark"] footer {
+  background-color: #000000;
+}
+
+/* === HW5 Project cards === */
+
+/* Layout for the custom <projects-body> on the Projects page */
+projects-body {
+  display: block;
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: var(--projects-bg-color);
+}
+
+/* Grid layout for the custom <projects-grid> element */
+projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Card-level CSS variables used by <project-card> */
+:root {
+  --projects-card-bg: rgba(255, 255, 255, 0.95);
+  --projects-card-radius: 1.25rem;
+  --projects-card-padding: 1.25rem;
+  --projects-card-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  --projects-card-border: 0.1rem solid var(--accent-color);
+  --projects-card-title-color: var(--accent-color);
+  --projects-card-text-color: var(--text-color);
+  --projects-card-tag-bg: rgba(254, 140, 172, 0.12);
+  --projects-card-link-color: var(--accent-color);
+}
+
+:root[data-theme="dark"] {
+  --projects-card-bg: #111111;
+  --projects-card-text-color: #ffffff;
+  --projects-card-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stormy Star's Personal Portfolio | Contact</title>
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+        <link rel="stylesheet" href="styleSheet.css" />
+    </head>
+    <body>
+        <marquee behavior="scroll" direction="left" scrollamount="10">₊‧°𐐪♡𐑂°‧₊Welcome to my personal portfolio! 𐙚 ‧₊˚ ⋅</marquee>
+        <header>
+            <nav class="main-nav" aria-label="Main">
+                <a href="index.html" class="logo-link">
+                <picture>
+                    <source srcset="img/logo.png" type="image/png">
+                    <img src="img/logo.png" alt="Home Button" width="200">
+                </picture>
+                </a>
+                <a href="resume.html">Resume</a>
+                <a href="project.html">Projects</a>
+                <a href="form-with-js.html">form-with-js</a>
+                <button type="button" id="theme-toggle" aria-label="Toggle dark mode">🖤</button>
+            </nav>
+        </header>
+        <lace-border></lace-border>
+            <form id="contact-form" action="https://httpbin.org/post" method="post">
+                <input type="hidden" name="possible_bot" value="true">
+                <!-- this one is for the error log -->
+                <input type="hidden" name="form-errors" id="form-errors">
+
+                <label for="name">Name:</label><br>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    minlength="2"
+                    maxlength="40"
+                    pattern="^[A-Za-z ]+$"
+                    title="Name must be letters only (spaces allowed)."
+                >
+                <output class="error" id="name-error"></output>
+                <output class="info" id="name-info">
+                    Enter valid name: Jane Doe
+                </output>
+                <br>
+
+                <label for="email">Email:</label><br>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    maxlength="60"
+                >
+                <output class="error" id="email-error"></output>
+                <output class="info" id="email-info">
+                    Enter a valid email: emailUser@example.com
+                </output>
+                <br>
+
+                <label for="message">Message:</label><br>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    cols="50"
+                    required
+                    minlength="10"
+                    maxlength="500"
+                ></textarea>
+                <output class="error" id="message-error"></output>
+                <output class="info" id="message-info">
+                    You can write up to 500 characters.
+                </output>
+                <br>
+
+                <output id="error-in-form" class="error"></output>
+                <output id="form-submitted" class="info"></output>
+                <br>
+
+                <button type="submit">Send Message!</button>
+            </form>
+
+        <footer>
+            <p> Made with love by Stormy Star 𐙚 ‧₊˚ ⋅</p>
+        </footer>
+        <script>
+            const form = document.getElementById("contact-form");
+            const nameInput = document.getElementById("name");
+            const nameError = document.getElementById("name-error");
+            const allowedCharacters = /^[A-Za-z ]*$/;
+
+            const formSubmitted = document.getElementById("form-submitted");
+            const formErrors = document.getElementById("form-errors");
+
+            const emailInput = document.getElementById("email");
+            const emailError = document.getElementById("email-error");
+
+            const messageInput = document.getElementById("message");
+            const messageError = document.getElementById("message-error");
+
+            const errorInForm = document.getElementById("error-in-form");
+
+            const form_errors = [];
+
+            function showError(input, message) {
+                const errorOutput = document.getElementById(input.id + "-error");
+                errorOutput.textContent = message;
+                errorOutput.classList.remove("hidden");
+                input.classList.add("flash");
+
+                setTimeout(() => {
+                    errorOutput.classList.add("hidden");
+                    input.classList.remove("flash");
+                }, 2000);
+            }
+
+            function enforceCharacterRules(event) {
+                const currentValue = event.target.value;
+                if (!allowedCharacters.test(currentValue)) {
+                    showError(event.target, "Invalid character entered (letters + spaces only).");
+                    event.target.value = currentValue.replace(/[^A-Za-z ]/g, "");
+                }
+            }
+
+            nameInput.addEventListener("input", enforceCharacterRules);
+
+            nameInput.addEventListener("invalid", () => {
+                showError(nameInput, "Please enter your name.");
+            });
+
+            emailInput.addEventListener("invalid", () => {
+                showError(emailInput, "Please enter a valid email address.");
+            });
+
+            messageInput.addEventListener("invalid", () => {
+                showError(messageInput, "Please enter your message (10-500 characters).");
+            });
+
+            form.addEventListener("submit", (event) => {
+                errorInForm.textContent = "";
+                formSubmitted.textContent = "";
+
+                let hasErrors = false;
+
+                if (!nameInput.checkValidity()) {
+                    hasErrors = true;
+                    form_errors.push({
+                        field: "name",
+                        value: nameInput.value,
+                        error: "Invalid name entry"
+                    });
+                }
+
+                if (!emailInput.checkValidity()) {
+                    hasErrors = true;
+                    form_errors.push({
+                        field: "email",
+                        value: emailInput.value,
+                        error: "Invalid email entry"
+                    });
+                }
+
+                if (!messageInput.checkValidity()) {
+                    hasErrors = true;
+                    form_errors.push({
+                        field: "message",
+                        value: messageInput.value,
+                        error: "Invalid message entry"
+                    });
+                }
+
+                formErrors.value = JSON.stringify(form_errors);
+
+                if (hasErrors) {
+                    event.preventDefault();
+                    errorInForm.textContent = "Please fix the form and submit again.";
+                } 
+                else {
+                    formSubmitted.textContent = "Form submitted successfully!";
+                }
+        });
+        </script>
+        <script src="script-theme.js"></script>
+        <script src="script-view-transition.js"></script>
+    </body>
+</html>
+

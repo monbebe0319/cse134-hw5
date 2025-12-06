@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stormy Star's Personal Portfolio | Projects</title>
+    <link rel="stylesheet" href="styleSheet.css" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+  </head>
+  <body>
+    <marquee behavior="scroll" direction="left" scrollamount="10">
+      ₊‧°𐐪♡𐑂°‧₊Welcome to my personal portfolio! 𐙚 ‧₊˚ ⋅
+    </marquee>
+
+    <header>
+      <nav class="main-nav" aria-label="Main">
+        <a href="index.html" class="logo-link">
+          <picture>
+            <source srcset="img/logo.png" type="image/png" />
+            <img src="img/logo.png" alt="Home Button" width="200" />
+          </picture>
+        </a>
+        <a href="resume.html">Resume</a>
+        <a href="project.html">Projects</a>
+        <a href="form-with-js.html">form-with-js</a>
+        <button
+          type="button"
+          id="theme-toggle"
+          aria-label="Toggle dark mode"
+        >
+          🖤
+        </button>
+      </nav>
+    </header>
+
+    <lace-border></lace-border>
+
+    <projects-body>
+      <h2>₊‧°𐐪♡𐑂°‧₊ My Projects ₊‧°𐐪♡𐑂°‧₊</h2>
+
+      <!-- Custom element that will act as the CSS grid container -->
+      <projects-grid></projects-grid>
+    </projects-body>
+    
+
+    <footer>
+      <p>Made with love by Stormy Star 𐙚 ‧₊˚ ⋅</p>
+    </footer>
+
+    <script src="script-theme.js"></script>
+    <script src="script-view-transition.js"></script>
+
+    <script type="module" src="project-card.js"></script>
+    <script type="module" src="projects.js"></script>
+    </body>
+</html>
+
