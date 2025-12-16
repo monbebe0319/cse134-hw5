@@ -59,13 +59,14 @@ function loadLocalProjects() {
 }
 
 const REMOTE_PROJECTS_URL =
-  "https://raw.githubusercontent.com/monbebe0319/cse134-hw5/main/remote-projects.json";
+  "https://api.jsonbin.io/v3/b/6940c30cd0ea881f402c34d6/latest";
 
 async function loadRemoteProjects() {
   const response = await fetch(REMOTE_PROJECTS_URL, { cache: "no-store" });
   if (!response.ok) return;
-  const projects = await response.json();
-  if (!Array.isArray(projects)) return;
+  const data = await response.json();
+  const projects = data && Array.isArray(data.record) ? data.record : null;
+  if (!projects) return;
   renderProjects(projects);
 }
 
