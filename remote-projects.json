@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Zoo Simulator Project",
+    "image": "img/zoo.png",
+    "imageAlt": "Screenshot of the zoo simulator project",
+    "description": "Developed a zoo simulator game using Java, where players design enclosures, manage animals, and grow their zoo using object-oriented principles.",
+    "tags": "Java, OOP, Game Development"
+  },
+  {
+    "id": 2,
+    "title": "Speech-to-Text (Speechify-Style) App",
+    "image": "img/mic.png",
+    "imageAlt": "Microphone icon representing speech to text application",
+    "description": "Created a speech-to-text application that turns spoken audio into text, improving accessibility and note-taking with real-time transcription.",
+    "tags": "TypeScript, APIs, Accessibility"
+  }
+]

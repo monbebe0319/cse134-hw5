@@ -33,19 +33,12 @@ function seedLocalStorageIfEmpty() {
   }
 }
 
-
 function createProjectCard(project) {
   const card = document.createElement("project-card");
   card.setAttribute("title", project.title || "Untitled Project");
   card.setAttribute("image", project.image || "img/logo.png");
-  card.setAttribute(
-    "image-alt",
-    project.imageAlt || `${project.title || "Project"} preview image`,
-  );
-  card.setAttribute(
-    "description",
-    project.description || "No description provided yet.",
-  );
+  card.setAttribute("image-alt", project.imageAlt || "");
+  card.setAttribute("description", project.description || "");
   card.setAttribute("tags", project.tags || "");
   return card;
 }
@@ -53,68 +46,33 @@ function createProjectCard(project) {
 function renderProjects(projects) {
   const grid = document.querySelector("projects-grid");
   if (!grid) return;
-
-  projects.forEach((project) => {
-    const card = createProjectCard(project);
-    grid.appendChild(card);
-  });
+  grid.innerHTML = "";
+  projects.forEach((p) => grid.appendChild(createProjectCard(p)));
 }
 
-
 function loadLocalProjects() {
-  try {
-    const data = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (!data) {
-      console.warn("No local projects found in localStorage.");
-      return;
-    }
-    const projects = JSON.parse(data);
-    if (!Array.isArray(projects)) {
-      console.error("Local projects data is not an array:", projects);
-      return;
-    }
-    renderProjects(projects);
-  } catch (err) {
-    console.error("Error loading local projects:", err);
-  }
+  const data = localStorage.getItem(LOCAL_STORAGE_KEY);
+  if (!data) return;
+  const projects = JSON.parse(data);
+  if (!Array.isArray(projects)) return;
+  renderProjects(projects);
 }
 
 const REMOTE_PROJECTS_URL =
-  "https://api.jsonbin.io/v3/qs/6934ac46d0ea881f4017764c";
-
+  "https://raw.githubusercontent.com/monbebe0319/cse134-hw5/main/remote-projects.json";
 
 async function loadRemoteProjects() {
-  try {
-    const response = await fetch(REMOTE_PROJECTS_URL);
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
-
-    const data = await response.json();
-    const projects = Array.isArray(data) ? data : data.record;
-
-    if (!Array.isArray(projects)) {
-      console.error("Remote data is not an array:", projects);
-      return;
-    }
-
-    renderProjects(projects);
-  } catch (err) {
-    console.error("Error loading remote projects:", err);
-  }
+  const response = await fetch(REMOTE_PROJECTS_URL, { cache: "no-store" });
+  if (!response.ok) return;
+  const projects = await response.json();
+  if (!Array.isArray(projects)) return;
+  renderProjects(projects);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   seedLocalStorageIfEmpty();
-
   const localBtn = document.getElementById("load-local");
-  const remoteBtn = document.getElementById("load-github"); // your remote button id
-
-  if (localBtn) {
-    localBtn.addEventListener("click", loadLocalProjects);
-  }
-
-  if (remoteBtn) {
-    remoteBtn.addEventListener("click", loadRemoteProjects);
-  }
+  const remoteBtn = document.getElementById("load-github");
+  if (localBtn) localBtn.addEventListener("click", loadLocalProjects);
+  if (remoteBtn) remoteBtn.addEventListener("click", loadRemoteProjects);
 });
